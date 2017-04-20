@@ -1,0 +1,1368 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="http://tldr-pages.github.io">tldr (v2.0.0)</a>
+</h1>
+<h4>Simplified and community-driven man pages</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr">module tldr</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan"></span>tldr</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tldr.</span>cache</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tldr.</span>config</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tldr.</span>messages</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tldr.</span>parser</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tldr.</span>platform</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tldr.</span>remote</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tldr.</span>render</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tldr.</span>utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr.cache">module tldr.cache</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.cache.clear">
+            function <span class="apidocSignatureSpan">tldr.cache.</span>clear
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.cache.getPage">
+            function <span class="apidocSignatureSpan">tldr.cache.</span>getPage
+            <span class="apidocSignatureSpan">(page, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.cache.lastUpdated">
+            function <span class="apidocSignatureSpan">tldr.cache.</span>lastUpdated
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.cache.update">
+            function <span class="apidocSignatureSpan">tldr.cache.</span>update
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr.config">module tldr.config</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.config.get">
+            function <span class="apidocSignatureSpan">tldr.config.</span>get
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.config.reset">
+            function <span class="apidocSignatureSpan">tldr.config.</span>reset
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr.messages">module tldr.messages</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.messages.emptyCache">
+            function <span class="apidocSignatureSpan">tldr.messages.</span>emptyCache
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.messages.notFound">
+            function <span class="apidocSignatureSpan">tldr.messages.</span>notFound
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr.parser">module tldr.parser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.parser.parse">
+            function <span class="apidocSignatureSpan">tldr.parser.</span>parse
+            <span class="apidocSignatureSpan">(markdown)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr.platform">module tldr.platform</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.platform.getPreferredPlatform">
+            function <span class="apidocSignatureSpan">tldr.platform.</span>getPreferredPlatform
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.platform.getPreferredPlatformFolder">
+            function <span class="apidocSignatureSpan">tldr.platform.</span>getPreferredPlatformFolder
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.platform.isSupported">
+            function <span class="apidocSignatureSpan">tldr.platform.</span>isSupported
+            <span class="apidocSignatureSpan">(platform)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.platform.resolve">
+            function <span class="apidocSignatureSpan">tldr.platform.</span>resolve
+            <span class="apidocSignatureSpan">(command)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr.remote">module tldr.remote</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.remote.download">
+            function <span class="apidocSignatureSpan">tldr.remote.</span>download
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr.render">module tldr.render</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.render.toANSI">
+            function <span class="apidocSignatureSpan">tldr.render.</span>toANSI
+            <span class="apidocSignatureSpan">(page)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr.tldr">module tldr.tldr</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.tldr.clearCache">
+            function <span class="apidocSignatureSpan">tldr.tldr.</span>clearCache
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.tldr.get">
+            function <span class="apidocSignatureSpan">tldr.tldr.</span>get
+            <span class="apidocSignatureSpan">(commands, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.tldr.list">
+            function <span class="apidocSignatureSpan">tldr.tldr.</span>list
+            <span class="apidocSignatureSpan">(singleColumn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.tldr.listAll">
+            function <span class="apidocSignatureSpan">tldr.tldr.</span>listAll
+            <span class="apidocSignatureSpan">(singleColumn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.tldr.random">
+            function <span class="apidocSignatureSpan">tldr.tldr.</span>random
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.tldr.randomExample">
+            function <span class="apidocSignatureSpan">tldr.tldr.</span>randomExample
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.tldr.render">
+            function <span class="apidocSignatureSpan">tldr.tldr.</span>render
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.tldr.updateCache">
+            function <span class="apidocSignatureSpan">tldr.tldr.</span>updateCache
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr.utils">module tldr.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.utils.commandSupportedOn">
+            function <span class="apidocSignatureSpan">tldr.utils.</span>commandSupportedOn
+            <span class="apidocSignatureSpan">(platform)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.utils.isPage">
+            function <span class="apidocSignatureSpan">tldr.utils.</span>isPage
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.utils.parsePagename">
+            function <span class="apidocSignatureSpan">tldr.utils.</span>parsePagename
+            <span class="apidocSignatureSpan">(pagefile)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.utils.parsePlatform">
+            function <span class="apidocSignatureSpan">tldr.utils.</span>parsePlatform
+            <span class="apidocSignatureSpan">(pagefile)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.utils.walkSync">
+            function <span class="apidocSignatureSpan">tldr.utils.</span>walkSync
+            <span class="apidocSignatureSpan">(dir, filelist)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr" id="apidoc.module.tldr">module tldr</a></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr.cache" id="apidoc.module.tldr.cache">module tldr.cache</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.cache.clear" id="apidoc.element.tldr.cache.clear">
+        function <span class="apidocSignatureSpan">tldr.cache.</span>clear
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(done) =&gt; {
+  fs.remove(CACHE_FOLDER, done);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  index.getShortIndex(() =&gt; {
+    renderContent(content);
+  });
+});
+};
+
+exports.clearCache = () =&gt; {
+cache.<span class="apidocCodeKeywordSpan">clear</span>(() =&gt; {
+  console.log('Done');
+});
+};
+
+exports.updateCache = () =&gt; {
+console.log('Updating...');
+cache.update((err) =&gt; {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.cache.getPage" id="apidoc.element.tldr.cache.getPage">
+        function <span class="apidocSignatureSpan">tldr.cache.</span>getPage
+        <span class="apidocSignatureSpan">(page, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(page, done) =&gt; {
+  let preferredPlatform = platform.getPreferredPlatformFolder();
+  index.findPlatform(page, preferredPlatform, (folder) =&gt; {
+    if (folder) {
+      let filePath = path.join(CACHE_FOLDER, 'pages', folder, page + '.md');
+      fs.readFile(filePath, 'utf8', done);
+    } else {
+      done(null, null);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+function printBestPage(command, options) {
+// TODO: replace with default parameter if Node v4 support dropped.
+options = options || {};
+/* eslint-disable */ // To allow not checking for err
+// Trying to get the page from cache first
+cache.<span class="apidocCodeKeywordSpan">getPage</span>(command, (err, content) =&gt; {
+/* eslint-enable */
+  if (!content) {
+    // If not found, try to update
+    console.log('Page not found. Updating cache ..');
+    cache.update((err) =&gt; {
+      if (err) {
+        console.error(err.stack);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.cache.lastUpdated" id="apidoc.element.tldr.cache.lastUpdated">
+        function <span class="apidocSignatureSpan">tldr.cache.</span>lastUpdated
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(done) =&gt; {
+  fs.stat(CACHE_FOLDER, done);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  page.examples = [sample(page.examples)];
+}
+let output = render.toANSI(page);
+console.log(output);
+}
+
+function checkStale() {
+cache.<span class="apidocCodeKeywordSpan">lastUpdated</span>((err, stats) =&gt; {
+  if (err) {
+    console.error(err.stack);
+    exit(1);
+  }
+  if (stats.mtime &lt; Date.now() - ms('30d')) {
+    console.warn('Cache is out of date, you should run "tldr --update"');
+  }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.cache.update" id="apidoc.element.tldr.cache.update">
+        function <span class="apidocSignatureSpan">tldr.cache.</span>update
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(done) =&gt; {
+  // Downloading fresh copy
+  remote.download((err, tempFolder) =&gt; {
+    if (err) {
+      return done(err);
+    }
+    // Creating cache folder
+    fs.mkdirs(CACHE_FOLDER, (err) =&gt; {
+      if (err) {
+        return done(err);
+      }
+      // Copying from tmp to cache folder
+      fs.copy(tempFolder, CACHE_FOLDER, {clobber: true}, (err) =&gt; {
+        if (err) {
+          return done(err);
+        }
+        index.rebuildPagesIndex(() =&gt; {
+          return done();
+        });
+      });
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  cache.clear(() =&gt; {
+    console.log('Done');
+  });
+};
+
+exports.updateCache = () =&gt; {
+  console.log('Updating...');
+  cache.<span class="apidocCodeKeywordSpan">update</span>((err) =&gt; {
+    if (err) {
+      console.error(err.stack);
+      exit(1);
+    }
+    console.log('Done');
+  });
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr.config" id="apidoc.module.tldr.config">module tldr.config</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.config.get" id="apidoc.element.tldr.config.get">
+        function <span class="apidocSignatureSpan">tldr.config.</span>get
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">() =&gt; {
+  if (!config) {
+    config = load();
+  }
+  return config;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+const fs = require('fs-extra');
+const path = require('path');
+const config = require('./config');
+const remote = require('./remote');
+const platform = require('./platform');
+const index = require('./index');
+
+const CACHE_FOLDER = path.join(config.<span class="apidocCodeKeywordSpan">get</span>().cache, 'cache');
+
+exports.lastUpdated = (done) =&gt; {
+fs.stat(CACHE_FOLDER, done);
+};
+
+exports.getPage = (page, done) =&gt; {
+let preferredPlatform = platform.getPreferredPlatformFolder();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.config.reset" id="apidoc.element.tldr.config.reset">
+        function <span class="apidocSignatureSpan">tldr.config.</span>reset
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">() =&gt; {
+  config = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr.messages" id="apidoc.module.tldr.messages">module tldr.messages</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.messages.emptyCache" id="apidoc.element.tldr.messages.emptyCache">
+        function <span class="apidocSignatureSpan">tldr.messages.</span>emptyCache
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">emptyCache() {
+  return `Local cache is empty
+Please run tldr --update`;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  printBestPage(commands.join('-'), options);
+};
+
+exports.random = () =&gt; {
+  let os = platform.getPreferredPlatformFolder();
+  index.commandsFor(os, (pages) =&gt; {
+    if (pages.length === 0) {
+      console.error(messages.<span class="apidocCodeKeywordSpan">emptyCache</span>());
+      exit(1);
+    }
+    let page = sample(pages);
+    console.log('PAGE', page);
+    printBestPage(page);
+  });
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.messages.notFound" id="apidoc.element.tldr.messages.notFound">
+        function <span class="apidocSignatureSpan">tldr.messages.</span>notFound
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">notFound() {
+  return `Page not found
+Try updating with "tldr --update", or submit a pull request to:
+https://github.com/` + config.get().pagesRepository;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // And then, try to check in cache again
+  cache.getPage(command, (err, content2) =&gt; {
+    if (err) {
+      console.error(err.stack);
+      exit(1);
+    }
+    if (!content2) {
+      console.error(messages.<span class="apidocCodeKeywordSpan">notFound</span>());
+      exit(1);
+    } else {
+      checkStale();
+      renderContent(content2, options);
+    }
+  });
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr.parser" id="apidoc.module.tldr.parser">module tldr.parser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.parser.parse" id="apidoc.element.tldr.parser.parse">
+        function <span class="apidocSignatureSpan">tldr.parser.</span>parse
+        <span class="apidocSignatureSpan">(markdown)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(markdown) =&gt; {
+  // Creating the page structure
+  let page = {
+    name: '',
+    description: '',
+    examples: [],
+    seeAlso: []
+  };
+  // Initializing the markdown renderer
+  let r = new marked.Renderer();
+
+  // ignore all syntax by default
+  allElements.forEach((e) =&gt; {
+    r[e] = () =&gt; { return ''; };
+  });
+
+  // Overriding the different elements to incorporate the custom tldr format
+
+  r.codespan = (text) =&gt; {
+    if (index.hasPage(text) &amp;&amp; text !== page.name) {
+      if (page.seeAlso.indexOf(text) &lt; 0) {
+        page.seeAlso.push(text);
+      }
+    }
+    let example = page.examples[page.examples.length-1];
+    // If example exists and a code is already not added
+    if (example &amp;&amp; !example.code) {
+      example.code = unhtml(text);
+    }
+    return text;
+  };
+
+
+  // paragraphs just pass through (automatically created by new lines)
+  r.paragraph = (text) =&gt; {
+    return text;
+  };
+
+  r.heading = (text, level) =&gt; {
+    if (level === 1) {
+      page.name = text.trim();
+    }
+    return text;
+  };
+
+  r.blockquote = (text) =&gt; {
+    page.description += unhtml(text);
+    return text;
+  };
+
+  r.strong = (text) =&gt; {
+    return chalk.bold(text);
+  };
+
+  r.em = (text) =&gt; {
+    return chalk.italic(text);
+  };
+
+  r.listitem = (text) =&gt; {
+    page.examples.push({
+      description: unhtml(text)
+    });
+    return text;
+  };
+
+  marked(markdown, {
+    renderer: r,
+    sanitize: true
+  });
+
+  page.examples = page.examples.filter((example) =&gt; {
+    return example.description &amp;&amp; example.code;
+  });
+
+  return page;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+return config;
+};
+
+function load() {
+const DEFAULT = path.join(__dirname, '..', 'config.json');
+const CUSTOM = path.join(osHomedir(), '.tldrrc');
+
+let defaultConfig = JSON.<span class="apidocCodeKeywordSpan">parse</span>(fs.readFileSync(DEFAULT));
+defaultConfig.cache = path.join(osHomedir(), '.tldr');
+/*eslint-disable no-process-env */
+defaultConfig.proxy = process.env.HTTP_PROXY || process.env.http_proxy;
+/*eslint-enable no-process-env */
+
+let customConfig = {};
+try {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr.platform" id="apidoc.module.tldr.platform">module tldr.platform</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.platform.getPreferredPlatform" id="apidoc.element.tldr.platform.getPreferredPlatform">
+        function <span class="apidocSignatureSpan">tldr.platform.</span>getPreferredPlatform
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getPreferredPlatform() {
+  let platform = config.get().platform;
+  if (isSupported(platform)) {
+    return platform;
+  }
+  return os.platform();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.platform.getPreferredPlatformFolder" id="apidoc.element.tldr.platform.getPreferredPlatformFolder">
+        function <span class="apidocSignatureSpan">tldr.platform.</span>getPreferredPlatformFolder
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getPreferredPlatformFolder() {
+  let platform = getPreferredPlatform();
+  return folders[platform];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+const CACHE_FOLDER = path.join(config.get().cache, 'cache');
+
+exports.lastUpdated = (done) =&gt; {
+fs.stat(CACHE_FOLDER, done);
+};
+
+exports.getPage = (page, done) =&gt; {
+let preferredPlatform = platform.<span class="apidocCodeKeywordSpan">getPreferredPlatformFolder</span>();
+index.findPlatform(page, preferredPlatform, (folder) =&gt; {
+  if (folder) {
+    let filePath = path.join(CACHE_FOLDER, 'pages', folder, page + '.md');
+    fs.readFile(filePath, 'utf8', done);
+  } else {
+    done(null, null);
+  }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.platform.isSupported" id="apidoc.element.tldr.platform.isSupported">
+        function <span class="apidocSignatureSpan">tldr.platform.</span>isSupported
+        <span class="apidocSignatureSpan">(platform)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isSupported(platform) {
+  return folders.hasOwnProperty(platform);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  throw new Error('Error in .tldrrc configuration:\n' + errors.join('\n'));
+}
+return merged;
+}
+
+function validatePlatform(os) {
+let platform = require('./platform');
+if (os &amp;&amp; !platform.<span class="apidocCodeKeywordSpan">isSupported</span>(os)) {
+  return 'Unsupported platform : ' + os;
+}
+return null;
+}
+
+function validateThemeItem(field, key) {
+let validValues = ['',
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.platform.resolve" id="apidoc.element.tldr.platform.resolve">
+        function <span class="apidocSignatureSpan">tldr.platform.</span>resolve
+        <span class="apidocSignatureSpan">(command)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function resolve(command) {
+  return [
+    specific(command, getPreferredPlatformFolder()),
+    specific(command, 'common')
+  ];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr.remote" id="apidoc.module.tldr.remote">module tldr.remote</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.remote.download" id="apidoc.element.tldr.remote.download">
+        function <span class="apidocSignatureSpan">tldr.remote.</span>download
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(done) =&gt; {
+  let request = require('request');
+  let unzip   = require('unzip2');
+  let src = source();
+  let url = config.get().url;
+  let target = path.join(os.tmpdir(), 'tldr');
+  let inside = target;
+  if (src) {
+    url = 'https://github.com/' + src.user + '/' + src.repo + '/archive/' + src.branch + '.zip';
+    inside = path.join(target, src.repo + '-' + src.branch);
+  }
+
+  // Empty the tmp dir
+  fs.emptyDir(target, (err) =&gt; {
+    if (err) {
+      return done(err, inside);
+    }
+
+    // Creating the extractor
+    let extractor = unzip.Extract({path: target});
+    extractor.on('error', () =&gt; {
+      done(new Error('Cannot update from ' + url), inside);
+    });
+    extractor.on('close', () =&gt; {
+      done(null, inside);
+    });
+
+    // Setting the proxy if set by config
+    if (config.get().proxy) {
+      request = request.defaults({
+        'proxy':config.proxy
+      });
+    }
+
+    // Creating the request and passing the extractor
+    let req = request.get({
+      url: url,
+      headers: {'User-Agent' : 'tldr-node-client'}
+    });
+
+    req.on('error', done);
+    req.pipe(extractor);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+exports.clear = (done) =&gt; {
+fs.remove(CACHE_FOLDER, done);
+};
+
+exports.update = (done) =&gt; {
+// Downloading fresh copy
+remote.<span class="apidocCodeKeywordSpan">download</span>((err, tempFolder) =&gt; {
+  if (err) {
+    return done(err);
+  }
+  // Creating cache folder
+  fs.mkdirs(CACHE_FOLDER, (err) =&gt; {
+    if (err) {
+      return done(err);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr.render" id="apidoc.module.tldr.render">module tldr.render</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.render.toANSI" id="apidoc.element.tldr.render.toANSI">
+        function <span class="apidocSignatureSpan">tldr.render.</span>toANSI
+        <span class="apidocSignatureSpan">(page)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(page) =&gt; {
+  // Creating the theme object
+  let themeOptions = config.get().themes[config.get().theme];
+  let theme = new Theme(themeOptions);
+
+  function highlight(code) {
+    let parts = code.split(/\{\{(.*?)\}\}/);
+    // every second part is a token
+    return '    ' + parts.reduce(function(memo, item, i) {
+      if (i % 2) {
+        return memo + theme.renderExampleToken(item);
+      }
+      return memo + theme.renderExampleCode(item);
+    }, '');
+  }
+
+  // Creating an array where each line is an element in it
+  let output = [];
+
+  // Pushing each line by extracting the page parts and applying the theme to it
+  output.push('  ' + theme.renderCommandName(page.name));
+  output.push('');
+  output.push('  ' + theme.renderMainDescription(page.description.replace(/\n/g, '\n  ')));
+  output.push('');
+
+  page.examples.forEach((example) =&gt; {
+    output.push(theme.renderExampleDescription('  - ' + example.description));
+    output.push(highlight(example.code));
+    output.push('');
+  });
+
+  if (page.seeAlso &amp;&amp; page.seeAlso.length &gt; 0) {
+    output.push('');
+    output.push('See also: ' + page.seeAlso.join(', '));
+    output.push('');
+  }
+
+  return '\n' + output.join('\n') + '\n';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (options.markdown) {
+  return console.log(content);
+}
+let page = parser.parse(content);
+if (options &amp;&amp; options.randomExample === true) {
+  page.examples = [sample(page.examples)];
+}
+let output = render.<span class="apidocCodeKeywordSpan">toANSI</span>(page);
+console.log(output);
+}
+
+function checkStale() {
+cache.lastUpdated((err, stats) =&gt; {
+  if (err) {
+    console.error(err.stack);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr.tldr" id="apidoc.module.tldr.tldr">module tldr.tldr</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.tldr.clearCache" id="apidoc.element.tldr.tldr.clearCache">
+        function <span class="apidocSignatureSpan">tldr.tldr.</span>clearCache
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">() =&gt; {
+  cache.clear(() =&gt; {
+    console.log('Done');
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.tldr.get" id="apidoc.element.tldr.tldr.get">
+        function <span class="apidocSignatureSpan">tldr.tldr.</span>get
+        <span class="apidocSignatureSpan">(commands, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(commands, options) =&gt; {
+  printBestPage(commands.join('-'), options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+const fs = require('fs-extra');
+const path = require('path');
+const config = require('./config');
+const remote = require('./remote');
+const platform = require('./platform');
+const index = require('./index');
+
+const CACHE_FOLDER = path.join(config.<span class="apidocCodeKeywordSpan">get</span>().cache, 'cache');
+
+exports.lastUpdated = (done) =&gt; {
+fs.stat(CACHE_FOLDER, done);
+};
+
+exports.getPage = (page, done) =&gt; {
+let preferredPlatform = platform.getPreferredPlatformFolder();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.tldr.list" id="apidoc.element.tldr.tldr.list">
+        function <span class="apidocSignatureSpan">tldr.tldr.</span>list
+        <span class="apidocSignatureSpan">(singleColumn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(singleColumn) =&gt; {
+  let os = platform.getPreferredPlatformFolder();
+  index.commandsFor(os, (commands) =&gt; {
+    printPages(commands, singleColumn);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.tldr.listAll" id="apidoc.element.tldr.tldr.listAll">
+        function <span class="apidocSignatureSpan">tldr.tldr.</span>listAll
+        <span class="apidocSignatureSpan">(singleColumn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(singleColumn) =&gt; {
+  index.commands((commands) =&gt; {
+    printPages(commands, singleColumn);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.tldr.random" id="apidoc.element.tldr.tldr.random">
+        function <span class="apidocSignatureSpan">tldr.tldr.</span>random
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">() =&gt; {
+  let os = platform.getPreferredPlatformFolder();
+  index.commandsFor(os, (pages) =&gt; {
+    if (pages.length === 0) {
+      console.error(messages.emptyCache());
+      exit(1);
+    }
+    let page = sample(pages);
+    console.log('PAGE', page);
+    printBestPage(page);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.tldr.randomExample" id="apidoc.element.tldr.tldr.randomExample">
+        function <span class="apidocSignatureSpan">tldr.tldr.</span>randomExample
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">() =&gt; {
+  let os = platform.getPreferredPlatformFolder();
+  index.commandsFor(os, (pages) =&gt; {
+    if (pages.length === 0) {
+      console.error(messages.emptyCache());
+      exit(1);
+    }
+    let page = sample(pages);
+    console.log('PAGE', page);
+    printBestPage(page, {randomExample: true});
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.tldr.render" id="apidoc.element.tldr.tldr.render">
+        function <span class="apidocSignatureSpan">tldr.tldr.</span>render
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(file) =&gt; {
+  // Reading the file
+  fs.readFile(file, 'utf8', (err, content) =&gt; {
+    if (err) {
+      console.error(err.stack);
+      exit(1);
+    }
+    // Getting the shortindex first to populate the shortindex var
+    index.getShortIndex(() =&gt; {
+      renderContent(content);
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.tldr.updateCache" id="apidoc.element.tldr.tldr.updateCache">
+        function <span class="apidocSignatureSpan">tldr.tldr.</span>updateCache
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">() =&gt; {
+  console.log('Updating...');
+  cache.update((err) =&gt; {
+    if (err) {
+      console.error(err.stack);
+      exit(1);
+    }
+    console.log('Done');
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr.utils" id="apidoc.module.tldr.utils">module tldr.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.utils.commandSupportedOn" id="apidoc.element.tldr.utils.commandSupportedOn">
+        function <span class="apidocSignatureSpan">tldr.utils.</span>commandSupportedOn
+        <span class="apidocSignatureSpan">(platform)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">commandSupportedOn(platform) {
+  return (command) =&gt; {
+    return command.platform.indexOf(platform) &gt;= 0
+      || command.platform.indexOf('common') &gt;= 0;
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.utils.isPage" id="apidoc.element.tldr.utils.isPage">
+        function <span class="apidocSignatureSpan">tldr.utils.</span>isPage
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isPage(file) {
+  return path.extname(file) === '.md';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.utils.parsePagename" id="apidoc.element.tldr.utils.parsePagename">
+        function <span class="apidocSignatureSpan">tldr.utils.</span>parsePagename
+        <span class="apidocSignatureSpan">(pagefile)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parsePagename(pagefile) {
+  return path.basename(pagefile, '.md');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.utils.parsePlatform" id="apidoc.element.tldr.utils.parsePlatform">
+        function <span class="apidocSignatureSpan">tldr.utils.</span>parsePlatform
+        <span class="apidocSignatureSpan">(pagefile)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parsePlatform(pagefile) {
+  return path.dirname(pagefile);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.utils.walkSync" id="apidoc.element.tldr.utils.walkSync">
+        function <span class="apidocSignatureSpan">tldr.utils.</span>walkSync
+        <span class="apidocSignatureSpan">(dir, filelist)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">walkSync(dir, filelist) {
+  var files = fs.readdirSync(dir);
+  filelist = filelist || [];
+  files.forEach((file) =&gt; {
+    if (fs.statSync(path.join(dir, file)).isDirectory()) {
+      filelist = this.walkSync(path.join(dir, file), filelist);
+    }
+    else {
+      filelist.push(path.join(path.basename(dir), file));
+    }
+  });
+  return filelist;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+},
+
+walkSync(dir, filelist) {
+  var files = fs.readdirSync(dir);
+  filelist = filelist || [];
+  files.forEach((file) =&gt; {
+    if (fs.statSync(path.join(dir, file)).isDirectory()) {
+      filelist = this.<span class="apidocCodeKeywordSpan">walkSync</span>(path.join(dir, file), filelist);
+    }
+    else {
+      filelist.push(path.join(path.basename(dir), file));
+    }
+  });
+  return filelist;
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
