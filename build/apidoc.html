@@ -51,7 +51,7 @@
 
         href="http://tldr-pages.github.io"
 
-    >tldr (v2.0.0)</a>
+    >tldr (v2.0.1)</a>
 </h1>
 <h4>Simplified and community-driven man pages</h4>
 <div class="apidocSectionDiv"><a
@@ -76,6 +76,12 @@
         <li>
 
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tldr.</span>config</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tldr.</span>index</span>
 
         </li>
 
@@ -173,6 +179,82 @@
             <a class="apidocElementLiA" href="#apidoc.element.tldr.config.reset">
             function <span class="apidocSignatureSpan">tldr.config.</span>reset
             <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tldr.index">module tldr.index</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.index.clearPagesIndex">
+            function <span class="apidocSignatureSpan">tldr.index.</span>clearPagesIndex
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.index.clearRuntimeIndex">
+            function <span class="apidocSignatureSpan">tldr.index.</span>clearRuntimeIndex
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.index.commands">
+            function <span class="apidocSignatureSpan">tldr.index.</span>commands
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.index.commandsFor">
+            function <span class="apidocSignatureSpan">tldr.index.</span>commandsFor
+            <span class="apidocSignatureSpan">(platform, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.index.findPlatform">
+            function <span class="apidocSignatureSpan">tldr.index.</span>findPlatform
+            <span class="apidocSignatureSpan">(page, preferredPlatform, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.index.getShortIndex">
+            function <span class="apidocSignatureSpan">tldr.index.</span>getShortIndex
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.index.hasPage">
+            function <span class="apidocSignatureSpan">tldr.index.</span>hasPage
+            <span class="apidocSignatureSpan">(page)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tldr.index.rebuildPagesIndex">
+            function <span class="apidocSignatureSpan">tldr.index.</span>rebuildPagesIndex
+            <span class="apidocSignatureSpan">(done)</span>
             </a>
 
         </li>
@@ -428,6 +510,8 @@
 
 
 
+
+
 </div>
 
 <div class="apidocSectionDiv">
@@ -605,21 +689,21 @@ exports.updateCache = () =&#x3e; {
   return config;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-const fs = require(&#x27;fs-extra&#x27;);
-const path = require(&#x27;path&#x27;);
-const config = require(&#x27;./config&#x27;);
-const remote = require(&#x27;./remote&#x27;);
-const platform = require(&#x27;./platform&#x27;);
-const index = require(&#x27;./index&#x27;);
+if (program.sunos) {
+  program.os = &#x27;sunos&#x27;;
+}
 
-const CACHE_FOLDER = path.join(config.<span class="apidocCodeKeywordSpan">get</span>().cache, &#x27;cache&#x27;);
 
-exports.lastUpdated = (done) =&#x3e; {
-fs.stat(CACHE_FOLDER, done);
-};
+if (program.os) {
+  if (platform.isSupported(program.os)) {
+    config.<span class="apidocCodeKeywordSpan">get</span>().platform = program.os;
+  }
+}
 
-exports.getPage = (page, done) =&#x3e; {
-let preferredPlatform = platform.getPreferredPlatformFolder();
+if (program.theme) {
+  // TODO: Validate theme
+  config.get().theme = program.theme;
+}
 ...</pre></li>
     </ul>
 
@@ -636,6 +720,265 @@ let preferredPlatform = platform.getPreferredPlatformFolder();
   config = null;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tldr.index" id="apidoc.module.tldr.index">module tldr.index</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.index.clearPagesIndex" id="apidoc.element.tldr.index.clearPagesIndex">
+        function <span class="apidocSignatureSpan">tldr.index.</span>clearPagesIndex
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function clearPagesIndex(done) {
+  fs.unlink(shortIndexFile, () =&#x3e; {
+    clearRuntimeIndex();
+    done();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.index.clearRuntimeIndex" id="apidoc.element.tldr.index.clearRuntimeIndex">
+        function <span class="apidocSignatureSpan">tldr.index.</span>clearRuntimeIndex
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function clearRuntimeIndex() {
+  shortIndex = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.index.commands" id="apidoc.element.tldr.index.commands">
+        function <span class="apidocSignatureSpan">tldr.index.</span>commands
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function commands(done) {
+  getShortIndex((idx) =&#x3e; {
+    return done(Object.keys(idx).sort());
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  let os = platform.getPreferredPlatformFolder();
+  index.commandsFor(os, (commands) =&#x3e; {
+    printPages(commands, singleColumn);
+  });
+};
+
+exports.listAll = (singleColumn) =&#x3e; {
+  index.<span class="apidocCodeKeywordSpan">commands</span>((commands) =&#x3e; {
+    printPages(commands, singleColumn);
+  });
+};
+
+exports.get = (commands, options) =&#x3e; {
+  printBestPage(commands.join(&#x27;-&#x27;), options);
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.index.commandsFor" id="apidoc.element.tldr.index.commandsFor">
+        function <span class="apidocSignatureSpan">tldr.index.</span>commandsFor
+        <span class="apidocSignatureSpan">(platform, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function commandsFor(platform, done) {
+  getShortIndex((idx) =&#x3e; {
+    let commands = Object.keys(idx)
+                    .filter((cmd) =&#x3e; {
+<span class="apidocCodeCommentSpan">                      /* eslint-disable */ // To allow using -1 to check if it contains in the array
+                      return idx[cmd].indexOf(platform) !== -1
+                        || idx[cmd].indexOf(&#x27;common&#x27;) !== -1 ;
+                      /* eslint-enable */
+</span>                    })
+                    .sort();
+    done(commands);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+const parser = require(&#x27;./parser&#x27;);
+const render = require(&#x27;./render&#x27;);
+const index = require(&#x27;./index&#x27;);
+const exit = process.exit;
+
+exports.list = (singleColumn) =&#x3e; {
+let os = platform.getPreferredPlatformFolder();
+index.<span class="apidocCodeKeywordSpan">commandsFor</span>(os, (commands) =&#x3e; {
+  printPages(commands, singleColumn);
+});
+};
+
+exports.listAll = (singleColumn) =&#x3e; {
+index.commands((commands) =&#x3e; {
+  printPages(commands, singleColumn);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.index.findPlatform" id="apidoc.element.tldr.index.findPlatform">
+        function <span class="apidocSignatureSpan">tldr.index.</span>findPlatform
+        <span class="apidocSignatureSpan">(page, preferredPlatform, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function findPlatform(page, preferredPlatform, done) {
+  // Load the index
+  getShortIndex((idx) =&#x3e; {
+    // First checking whether page is there or not
+    if (! (page in idx)) {
+      return done(null);
+    }
+    // Getting the platforms
+    let platforms = idx[page];
+    if (platforms.indexOf(preferredPlatform) &#x3e;= 0) {
+      return done(preferredPlatform);
+    } else if (platforms.indexOf(&#x27;common&#x27;) &#x3e;= 0) {
+      return done(&#x27;common&#x27;);
+    }
+    return done(null);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+exports.lastUpdated = (done) =&#x3e; {
+fs.stat(CACHE_FOLDER, done);
+};
+
+exports.getPage = (page, done) =&#x3e; {
+let preferredPlatform = platform.getPreferredPlatformFolder();
+index.<span class="apidocCodeKeywordSpan">findPlatform</span>(page, preferredPlatform, (folder) =&#x3e; {
+  if (folder) {
+    let filePath = path.join(CACHE_FOLDER, &#x27;pages&#x27;, folder, page + &#x27;.md&#x27;);
+    fs.readFile(filePath, &#x27;utf8&#x27;, done);
+  } else {
+    done(null, null);
+  }
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.index.getShortIndex" id="apidoc.element.tldr.index.getShortIndex">
+        function <span class="apidocSignatureSpan">tldr.index.</span>getShortIndex
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getShortIndex(done) {
+  if (!shortIndex) {
+    return readShortPagesIndex(done);
+  }
+  return done(shortIndex);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Reading the file
+fs.readFile(file, &#x27;utf8&#x27;, (err, content) =&#x3e; {
+  if (err) {
+    console.error(err.stack);
+    exit(1);
+  }
+  // Getting the shortindex first to populate the shortindex var
+  index.<span class="apidocCodeKeywordSpan">getShortIndex</span>(() =&#x3e; {
+    renderContent(content);
+  });
+});
+};
+
+exports.clearCache = () =&#x3e; {
+cache.clear(() =&#x3e; {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.index.hasPage" id="apidoc.element.tldr.index.hasPage">
+        function <span class="apidocSignatureSpan">tldr.index.</span>hasPage
+        <span class="apidocSignatureSpan">(page)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function hasPage(page) {
+  if (!shortIndex) {
+    return false;
+  }
+  return page in shortIndex;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+allElements.forEach((e) =&#x3e; {
+  r[e] = () =&#x3e; { return &#x27;&#x27;; };
+});
+
+// Overriding the different elements to incorporate the custom tldr format
+
+r.codespan = (text) =&#x3e; {
+  if (index.<span class="apidocCodeKeywordSpan">hasPage</span>(text) &#x26;&#x26; text !== page.name) {
+    if (page.seeAlso.indexOf(text) &#x3c; 0) {
+      page.seeAlso.push(text);
+    }
+  }
+  let example = page.examples[page.examples.length-1];
+  // If example exists and a code is already not added
+  if (example &#x26;&#x26; !example.code) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tldr.index.rebuildPagesIndex" id="apidoc.element.tldr.index.rebuildPagesIndex">
+        function <span class="apidocSignatureSpan">tldr.index.</span>rebuildPagesIndex
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function rebuildPagesIndex(done) {
+  clearPagesIndex(() =&#x3e; {
+    getShortIndex(()=&#x3e;{
+      return done();
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        return done(err);
+      }
+      // Copying from tmp to cache folder
+      fs.copy(tempFolder, CACHE_FOLDER, {clobber: true}, (err) =&#x3e; {
+        if (err) {
+          return done(err);
+        }
+        index.<span class="apidocCodeKeywordSpan">rebuildPagesIndex</span>(() =&#x3e; {
+          return done();
+        });
+      });
+    });
+  });
+};
+...</pre></li>
     </ul>
 
 
@@ -799,21 +1142,21 @@ https://github.com/` + config.get().pagesRepository;
   return page;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-return config;
-};
+console.log(&#x27;&#x27;);
+console.log(&#x27;To render a local file (for testing)&#x27;);
+console.log(&#x27;&#x27;);
+console.log(&#x27;    $ tldr --render /path/to/file.md&#x27;);
+console.log(&#x27;&#x27;);
+});
 
-function load() {
-const DEFAULT = path.join(__dirname, &#x27;..&#x27;, &#x27;config.json&#x27;);
-const CUSTOM = path.join(osHomedir(), &#x27;.tldrrc&#x27;);
+program.<span class="apidocCodeKeywordSpan">parse</span>(process.argv);
 
-let defaultConfig = JSON.<span class="apidocCodeKeywordSpan">parse</span>(fs.readFileSync(DEFAULT));
-defaultConfig.cache = path.join(osHomedir(), &#x27;.tldr&#x27;);
-/*eslint-disable no-process-env */
-defaultConfig.proxy = process.env.HTTP_PROXY || process.env.http_proxy;
-/*eslint-enable no-process-env */
+if (program.linux) {
+program.os = &#x27;linux&#x27;;
+}
 
-let customConfig = {};
-try {
+if (program.osx) {
+program.os = &#x27;osx&#x27;;
 ...</pre></li>
     </ul>
 
@@ -886,21 +1229,21 @@ index.findPlatform(page, preferredPlatform, (folder) =&#x3e; {
   return folders.hasOwnProperty(platform);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  throw new Error(&#x27;Error in .tldrrc configuration:\n&#x27; + errors.join(&#x27;\n&#x27;));
-}
-return merged;
+
+if (program.sunos) {
+program.os = &#x27;sunos&#x27;;
 }
 
-function validatePlatform(os) {
-let platform = require(&#x27;./platform&#x27;);
-if (os &#x26;&#x26; !platform.<span class="apidocCodeKeywordSpan">isSupported</span>(os)) {
-  return &#x27;Unsupported platform : &#x27; + os;
+
+if (program.os) {
+if (platform.<span class="apidocCodeKeywordSpan">isSupported</span>(program.os)) {
+  config.get().platform = program.os;
 }
-return null;
 }
 
-function validateThemeItem(field, key) {
-let validValues = [&#x27;&#x27;,
+if (program.theme) {
+// TODO: Validate theme
+config.get().theme = program.theme;
 ...</pre></li>
     </ul>
 
@@ -1090,7 +1433,23 @@ cache.lastUpdated((err, stats) =&#x3e; {
     console.log(&#x27;Done&#x27;);
   });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else if (program.listAll) {
+  tldr.listAll(program.singleColumn);
+} else if (program.random) {
+  tldr.random();
+} else if (program.randomExample) {
+  tldr.randomExample();
+} else if (program.clearCache) {
+  tldr.<span class="apidocCodeKeywordSpan">clearCache</span>();
+} else if (program.update) {
+  tldr.updateCache();
+} else if (program.render) {
+  tldr.render(program.render);
+} else if (program.args.length &#x3e;= 1) {
+  tldr.get(program.args, program);
+} else {
+...</pre></li>
     </ul>
 
 
@@ -1106,21 +1465,21 @@ cache.lastUpdated((err, stats) =&#x3e; {
   printBestPage(commands.join(&#x27;-&#x27;), options);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-const fs = require(&#x27;fs-extra&#x27;);
-const path = require(&#x27;path&#x27;);
-const config = require(&#x27;./config&#x27;);
-const remote = require(&#x27;./remote&#x27;);
-const platform = require(&#x27;./platform&#x27;);
-const index = require(&#x27;./index&#x27;);
+if (program.sunos) {
+  program.os = &#x27;sunos&#x27;;
+}
 
-const CACHE_FOLDER = path.join(config.<span class="apidocCodeKeywordSpan">get</span>().cache, &#x27;cache&#x27;);
 
-exports.lastUpdated = (done) =&#x3e; {
-fs.stat(CACHE_FOLDER, done);
-};
+if (program.os) {
+  if (platform.isSupported(program.os)) {
+    config.<span class="apidocCodeKeywordSpan">get</span>().platform = program.os;
+  }
+}
 
-exports.getPage = (page, done) =&#x3e; {
-let preferredPlatform = platform.getPreferredPlatformFolder();
+if (program.theme) {
+  // TODO: Validate theme
+  config.get().theme = program.theme;
+}
 ...</pre></li>
     </ul>
 
@@ -1139,7 +1498,23 @@ let preferredPlatform = platform.getPreferredPlatformFolder();
     printPages(commands, singleColumn);
   });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+if (program.theme) {
+  // TODO: Validate theme
+  config.get().theme = program.theme;
+}
+
+if (program.list) {
+  tldr.<span class="apidocCodeKeywordSpan">list</span>(program.singleColumn);
+} else if (program.listAll) {
+  tldr.listAll(program.singleColumn);
+} else if (program.random) {
+  tldr.random();
+} else if (program.randomExample) {
+  tldr.randomExample();
+} else if (program.clearCache) {
+...</pre></li>
     </ul>
 
 
@@ -1156,7 +1531,23 @@ let preferredPlatform = platform.getPreferredPlatformFolder();
     printPages(commands, singleColumn);
   });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // TODO: Validate theme
+  config.get().theme = program.theme;
+}
+
+if (program.list) {
+  tldr.list(program.singleColumn);
+} else if (program.listAll) {
+  tldr.<span class="apidocCodeKeywordSpan">listAll</span>(program.singleColumn);
+} else if (program.random) {
+  tldr.random();
+} else if (program.randomExample) {
+  tldr.randomExample();
+} else if (program.clearCache) {
+  tldr.clearCache();
+} else if (program.update) {
+...</pre></li>
     </ul>
 
 
@@ -1180,7 +1571,23 @@ let preferredPlatform = platform.getPreferredPlatformFolder();
     printBestPage(page);
   });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+if (program.list) {
+  tldr.list(program.singleColumn);
+} else if (program.listAll) {
+  tldr.listAll(program.singleColumn);
+} else if (program.random) {
+  tldr.<span class="apidocCodeKeywordSpan">random</span>();
+} else if (program.randomExample) {
+  tldr.randomExample();
+} else if (program.clearCache) {
+  tldr.clearCache();
+} else if (program.update) {
+  tldr.updateCache();
+} else if (program.render) {
+...</pre></li>
     </ul>
 
 
@@ -1204,7 +1611,23 @@ let preferredPlatform = platform.getPreferredPlatformFolder();
     printBestPage(page, {randomExample: true});
   });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (program.list) {
+  tldr.list(program.singleColumn);
+} else if (program.listAll) {
+  tldr.listAll(program.singleColumn);
+} else if (program.random) {
+  tldr.random();
+} else if (program.randomExample) {
+  tldr.<span class="apidocCodeKeywordSpan">randomExample</span>();
+} else if (program.clearCache) {
+  tldr.clearCache();
+} else if (program.update) {
+  tldr.updateCache();
+} else if (program.render) {
+  tldr.render(program.render);
+} else if (program.args.length &#x3e;= 1) {
+...</pre></li>
     </ul>
 
 
@@ -1229,7 +1652,22 @@ let preferredPlatform = platform.getPreferredPlatformFolder();
     });
   });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else if (program.randomExample) {
+  tldr.randomExample();
+} else if (program.clearCache) {
+  tldr.clearCache();
+} else if (program.update) {
+  tldr.updateCache();
+} else if (program.render) {
+  tldr.<span class="apidocCodeKeywordSpan">render</span>(program.render);
+} else if (program.args.length &#x3e;= 1) {
+  tldr.get(program.args, program);
+} else {
+  program.outputHelp();
+  process.exit(1);
+}
+...</pre></li>
     </ul>
 
 
@@ -1251,7 +1689,23 @@ let preferredPlatform = platform.getPreferredPlatformFolder();
     console.log(&#x27;Done&#x27;);
   });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else if (program.random) {
+tldr.random();
+} else if (program.randomExample) {
+tldr.randomExample();
+} else if (program.clearCache) {
+tldr.clearCache();
+} else if (program.update) {
+tldr.<span class="apidocCodeKeywordSpan">updateCache</span>();
+} else if (program.render) {
+tldr.render(program.render);
+} else if (program.args.length &#x3e;= 1) {
+tldr.get(program.args, program);
+} else {
+program.outputHelp();
+process.exit(1);
+...</pre></li>
     </ul>
 
 
@@ -1304,7 +1758,23 @@ let preferredPlatform = platform.getPreferredPlatformFolder();
     <li>description and source-code<pre class="apidocCodePre">parsePagename(pagefile) {
   return path.basename(pagefile, &#x27;.md&#x27;);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function buildShortPagesIndex() {
+try {
+  let files = utils.walkSync(pagesPath);
+  files = files.filter(utils.isPage);
+  let reducer = (index, file) =&#x3e; {
+    let os = utils.parsePlatform(file);
+    let page = utils.<span class="apidocCodeKeywordSpan">parsePagename</span>(file);
+    if (index[page]) {
+      index[page].push(os);
+    } else {
+      index[page] = [os];
+    }
+    return index;
+  };
+...</pre></li>
     </ul>
 
 
@@ -1319,7 +1789,23 @@ let preferredPlatform = platform.getPreferredPlatformFolder();
     <li>description and source-code<pre class="apidocCodePre">parsePlatform(pagefile) {
   return path.dirname(pagefile);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+function buildShortPagesIndex() {
+try {
+  let files = utils.walkSync(pagesPath);
+  files = files.filter(utils.isPage);
+  let reducer = (index, file) =&#x3e; {
+    let os = utils.<span class="apidocCodeKeywordSpan">parsePlatform</span>(file);
+    let page = utils.parsePagename(file);
+    if (index[page]) {
+      index[page].push(os);
+    } else {
+      index[page] = [os];
+    }
+    return index;
+...</pre></li>
     </ul>
 
 
@@ -1345,21 +1831,21 @@ let preferredPlatform = platform.getPreferredPlatformFolder();
   return filelist;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-},
-
-walkSync(dir, filelist) {
-  var files = fs.readdirSync(dir);
-  filelist = filelist || [];
-  files.forEach((file) =&#x3e; {
-    if (fs.statSync(path.join(dir, file)).isDirectory()) {
-      filelist = this.<span class="apidocCodeKeywordSpan">walkSync</span>(path.join(dir, file), filelist);
-    }
-    else {
-      filelist.push(path.join(path.basename(dir), file));
-    }
-  });
-  return filelist;
+    return done(idx);
+  }
+});
 }
+
+function buildShortPagesIndex() {
+try {
+  let files = utils.<span class="apidocCodeKeywordSpan">walkSync</span>(pagesPath);
+  files = files.filter(utils.isPage);
+  let reducer = (index, file) =&#x3e; {
+    let os = utils.parsePlatform(file);
+    let page = utils.parsePagename(file);
+    if (index[page]) {
+      index[page].push(os);
+    } else {
 ...</pre></li>
     </ul>
 
