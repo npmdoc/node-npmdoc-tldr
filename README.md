@@ -1,6 +1,6 @@
 # npmdoc-tldr
 
-#### api documentation for  [tldr (v2.0.0)](http://tldr-pages.github.io)  [![npm package](https://img.shields.io/npm/v/npmdoc-tldr.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-tldr) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-tldr.svg)](https://travis-ci.org/npmdoc/node-npmdoc-tldr)
+#### basic api documentation for  [tldr (v2.0.1)](http://tldr-pages.github.io)  [![npm package](https://img.shields.io/npm/v/npmdoc-tldr.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-tldr) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-tldr.svg)](https://travis-ci.org/npmdoc/node-npmdoc-tldr)
 
 #### Simplified and community-driven man pages
 
@@ -21,52 +21,14 @@
 ```json
 
 {
-    "name": "tldr",
-    "version": "2.0.0",
-    "description": "Simplified and community-driven man pages",
-    "author": "Romain Prieto",
-    "license": "MIT",
-    "repository": "tldr-pages/tldr-node-client",
-    "keywords": [
-        "man",
-        "unix",
-        "linux",
-        "osx",
-        "commands",
-        "command-line",
-        "shell",
-        "bash",
-        "zsh"
-    ],
-    "homepage": "http://tldr-pages.github.io",
-    "engines": {
-        "node": ">=4.7"
+    "author": {
+        "name": "Romain Prieto"
     },
-    "main": "bin/tldr",
-    "files": [
-        "bin",
-        "config.json",
-        "lib",
-        "LICENSE.md"
-    ],
     "bin": {
         "tldr": "./bin/tldr"
     },
-    "preferGlobal": true,
-    "directories": {
-        "test": "test"
-    },
-    "scripts": {
-        "precommit": "npm run lint && npm run test:quiet",
-        "prepush": "npm run test:quiet",
-        "start": "node ./bin/tldr",
-        "example": "node ./bin/tldr tar",
-        "test": "mocha test --require=env-test",
-        "test:quiet": "npm test --reporter=dot",
-        "lint": "eslint lib test bin/tldr",
-        "watch": "mocha test --require=env-test --reporter=min --watch --growl",
-        "test:functional": "bash test/functional-test.sh",
-        "test:all": "npm run lint && npm test && npm run test:functional"
+    "bugs": {
+        "url": "https://github.com/tldr-pages/tldr-node-client/issues"
     },
     "dependencies": {
         "chalk": "~1.1.1",
@@ -84,6 +46,7 @@
         "request": "~2.75.0",
         "unzip2": "~0.2.5"
     },
+    "description": "Simplified and community-driven man pages",
     "devDependencies": {
         "env-test": "*",
         "eslint": "*",
@@ -91,7 +54,69 @@
         "mocha": "*",
         "should": "*",
         "sinon": "*"
-    }
+    },
+    "directories": {
+        "test": "test"
+    },
+    "dist": {
+        "shasum": "1240293c7e6962905d979d386cd604e046881e91",
+        "tarball": "https://registry.npmjs.org/tldr/-/tldr-2.0.1.tgz"
+    },
+    "engines": {
+        "node": ">=4.7"
+    },
+    "files": [
+        "bin",
+        "config.json",
+        "lib",
+        "LICENSE.md"
+    ],
+    "gitHead": "554ac6f768b06e07cc3fced23bb29b57774ef423",
+    "homepage": "http://tldr-pages.github.io",
+    "keywords": [
+        "man",
+        "unix",
+        "linux",
+        "osx",
+        "commands",
+        "command-line",
+        "shell",
+        "bash",
+        "zsh"
+    ],
+    "license": "MIT",
+    "main": "bin/tldr",
+    "maintainers": [
+        {
+            "name": "agnivade"
+        },
+        {
+            "name": "asyncadventures"
+        },
+        {
+            "name": "igorshubovych"
+        }
+    ],
+    "name": "tldr",
+    "optionalDependencies": {},
+    "preferGlobal": true,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tldr-pages/tldr-node-client.git"
+    },
+    "scripts": {
+        "example": "node ./bin/tldr tar",
+        "lint": "eslint lib test bin/tldr",
+        "precommit": "npm run lint && npm run test:quiet",
+        "prepush": "npm run test:quiet",
+        "start": "node ./bin/tldr",
+        "test": "mocha test --require=env-test",
+        "test:all": "npm run lint && npm test && npm run test:functional",
+        "test:functional": "bash test/functional-test.sh",
+        "test:quiet": "npm test --reporter=dot",
+        "watch": "mocha test --require=env-test --reporter=min --watch --growl"
+    },
+    "version": "2.0.1"
 }
 ```
 
